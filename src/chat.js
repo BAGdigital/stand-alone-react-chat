@@ -1,20 +1,22 @@
 'use strict';
-
+console.log('window', window);
 const e = React.createElement;
 const App = (props) => {
-    const [count, setCount] = React.useState(0);
-    React.useEffect(() => {
-        console.log(props)
-    }, [])
     return <div>
-        <h1>{count}</h1>
-        <Button setCount={setCount} />
-        <p>My Key : {key}</p>
+        <Button />
     </div>
 }
 const Button = (props) => {
+    const [open, setOpen] = React.useState(false);
     return (
-        <button onClick={() => props.setCount((count) => count + 1)} >Click me</button>
+        <div>
+            <button className="Chatbtn" onClick={() => { setOpen(!open) }}><i className="fas fa-comment-alt"></i></button>
+            <div className={`chatwindow ${open ? '' : "hide"}`} >
+                <div className="chatWindow-header">
+                    Chat Header
+                </div>
+            </div>
+        </div>
     )
 }
 
