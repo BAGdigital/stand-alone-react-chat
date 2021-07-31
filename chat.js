@@ -92,6 +92,7 @@ var Button = function Button(props) {
                             setCurmsg(e.target.value);
                         }
                     }),
+                    React.createElement('br', null),
                     React.createElement(
                         'button',
                         {
@@ -115,12 +116,15 @@ var Button = function Button(props) {
                             return setUname(e.target.value);
                         }
                     }),
+                    ' ',
+                    React.createElement('br', null),
                     React.createElement('input', {
                         value: roomNo,
                         onChange: function onChange(e) {
                             return setRoomNo(e.target.value);
                         }
                     }),
+                    React.createElement('br', null),
                     React.createElement(
                         'button',
                         { onClick: connectRoom },

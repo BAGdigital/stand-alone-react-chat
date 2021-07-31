@@ -59,7 +59,7 @@ const Button = (props) => {
                                 onChange={e => {
                                     setCurmsg(e.target.value)
                                 }}
-                            />
+                            /><br />
                             <button
                                 onClick={() => {
                                     socket.send(JSON.stringify({
@@ -76,11 +76,11 @@ const Button = (props) => {
                                 placeholder="user name"
                                 value={uname}
                                 onChange={(e) => setUname(e.target.value)}
-                            />
+                            /> <br />
                             <input
                                 value={roomNo}
                                 onChange={(e) => setRoomNo(e.target.value)}
-                            />
+                            /><br />
                             <button onClick={connectRoom} >Go</button>
                         </div>
                     }
