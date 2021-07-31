@@ -66,6 +66,15 @@ var Button = function Button(props) {
         }
     }, [socket]);
 
+    var send = function send(e) {
+        e.preventDefault();
+        socket.send(JSON.stringify({
+            'username': uname,
+            'message': curmsg
+        }));
+        setCurmsg('');
+    };
+
     return React.createElement(
         'div',
         null,
@@ -87,24 +96,16 @@ var Button = function Button(props) {
                 socket ? React.createElement(
                     'div',
                     null,
-                    React.createElement('input', { value: curmsg,
-                        onChange: function onChange(e) {
-                            setCurmsg(e.target.value);
-                        }
-                    }),
-                    React.createElement('br', null),
                     React.createElement(
-                        'button',
-                        {
-                            onClick: function onClick() {
-                                socket.send(JSON.stringify({
-                                    'username': uname,
-                                    'message': curmsg
-                                }));
-                                setCurmsg('');
+                        'form',
+                        { onSubmit: send },
+                        React.createElement('input', { value: curmsg,
+                            onChange: function onChange(e) {
+                                setCurmsg(e.target.value);
                             }
-                        },
-                        'send'
+                        }),
+                        React.createElement('br', null),
+                        React.createElement('input', { type: "submit", value: 'Send' })
                     )
                 ) : React.createElement(
                     'div',

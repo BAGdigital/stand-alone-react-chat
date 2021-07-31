@@ -43,6 +43,15 @@ const Button = (props) => {
         }
     }, [socket]);
 
+    const send = (e) => {
+        e.preventDefault();
+        socket.send(JSON.stringify({
+            'username': uname,
+            'message': curmsg
+        }))
+        setCurmsg('')
+    }
+
     return (
         <div>
             <button className="Chatbtn" onClick={() => { setOpen(!open) }}><i className="fas fa-comment-alt"></i></button>
@@ -55,22 +64,14 @@ const Button = (props) => {
                     })} */}
                     {
                         socket ? <div>
-                            <input value={curmsg}
-                                onChange={e => {
-                                    setCurmsg(e.target.value)
-                                }}
-                            /><br />
-                            <button
-                                onClick={() => {
-                                    socket.send(JSON.stringify({
-                                        'username': uname,
-                                        'message': curmsg
-                                    }))
-                                    setCurmsg('')
-                                }}
-                            >
-                                send
-                            </button>
+                            <form onSubmit={send} >
+                                <input value={curmsg}
+                                    onChange={e => {
+                                        setCurmsg(e.target.value)
+                                    }}
+                                /><br />
+                                <input type={"submit"} value="Send" />
+                            </form>
                         </div> : <div>
                             <input
                                 placeholder="user name"

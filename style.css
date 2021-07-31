@@ -41,6 +41,15 @@
     overflow-y: scroll;
 }
 
-.hide{
+@media screen and (max-width: 500px) {
+    .chatwindow {
+        min-height: calc(100vh - 250px);
+        width: 90vw !important;
+        margin: 5px;
+        right: 0px;
+    }
+}
+
+.hide {
     display: none;
 }
